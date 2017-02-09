@@ -1,0 +1,150 @@
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>1play2day 主角日常 - Game Framework</title>
+        <script src="jquery_3.1.1.js"></script>
+        <script src="soundmanager2-jsmin.js"></script>
+        <script src="fullscreen.js"></script>
+        <script src="sprite.js"></script>
+        <script>
+            $(function(){
+                var $start = $("#start"),
+                    $canvas = $("#stageCanvas"),
+                    graphic,
+                    stageWidth = 1024,
+                    stageHeight = 768,
+                    fps = 60,
+                    imageList = [{id: "p1", url: "rc/Penguins.jpg"},{id: "p2", url: "rc/Koala.jpg"}],
+                    soundList = [{id: "s1", url: "rc/Kalimba.mp3"},{id: "s2", url: "Sleep Away.mp3"}];
+
+                if (!$canvas[0] || !$canvas[0].getContext) return;
+                $start.click(function(){
+                    $start.unbind("click");
+                    $start.remove();
+                    init();
+                });
+                //
+                function init(){
+                    toggleFullScreen();
+                    $canvas.attr("width", stageWidth);
+                    $canvas.attr("height", stageHeight);
+                    $canvas.width(screen.width);
+                    $canvas.height(screen.height);
+                    $canvas.contextmenu(function(e){
+                        e.preventDefault();
+                    });
+                    graphic = $canvas[0].getContext("2d");
+                    loadResource();
+                    //draw();
+                }
+                //
+                function loadResource(){
+                    //
+                    function loadImages(){
+                        var img_current_count = 0,
+                            img_total_count = imageList.length;
+                        //
+                        function onLoadImage(){
+                            var $this = $(this),
+                                img = $this[0]
+                                src = $this.attr("src"),
+                                idx = imageList.map(function(e){
+                                    return e.url;
+                                }).indexOf(src);
+                            //
+                            $this.off("load");
+                            imageList[imageList[idx].id] = img;
+                            delete imageList[idx];
+                            img_current_count++;
+                            if (img_current_count === img_total_count){
+                                //圖片讀取完畢
+                                loadSounds();
+                            }
+                        }
+                        for(var i=0; i<img_total_count; i++){
+                            $("<img src='" + imageList[i].url + "'>").on("load", onLoadImage);
+                        }
+                    }
+                    //
+                    function loadSounds(){
+                        var snd_current_count = 0,
+                            snd_total_count = soundList.length;
+                        //
+                        function onLoadSound(){
+                            var snd = this,
+                                idx = soundList.map(function(e){
+                                    return e.id;
+                                }).indexOf(this.id);
+                            soundList[soundList[idx].id] = snd;
+                            delete soundList[idx];
+                            snd_current_count++;
+                            if (snd_current_count === snd_total_count){
+                                //聲音讀取完畢
+                                scene_onLoad();
+                            }
+                        }
+                        //
+                        soundManager.setup({
+                            onready: function(){
+                                for (var i = 0; i < snd_total_count; i++){
+                                    soundManager.createSound({
+                                        id: soundList[i].id,
+                                        url: soundList[i].url,
+                                        onload: onLoadSound
+                                    }).load();
+                                }   
+                                
+                            }
+                        });
+                    }
+                    //
+                    loadImages();
+                }
+                //
+                var sp;
+                function scene_onLoad(){
+                    //graphic.drawImage(imageList["p2"], 0, 0);
+                    //soundList["s1"].play();
+                    sp = new Sprite();
+                    //sp.setImage(imageList["p1"]);
+                    sp.alpha = 0.5;
+                    sp.height = 300;
+                    setInterval(scene_onEnterFrame, 1000/fps);
+                }
+                //
+                //var x = 0;
+                function scene_onEnterFrame(){
+                    graphic.fillStyle = "#000000";
+                    graphic.fillRect(0, 0, stageWidth, stageHeight);
+                    //graphic.drawImage(imageList["p2"], x++, 0);
+                    sp.x++;
+                    sp.rotation++;
+                    sp.draw(graphic);
+                    graphic.fillStyle = "#FFFFFF";
+                    graphic.font = "20px Arial";
+                    graphic.fillText("Hello World", 100, 100);
+                }
+                // function draw(){
+                //     graphic.fillStyle="#000000";
+                //     graphic.fillRect(0, 0, 100, 100);
+                // }
+            });
+        </script>
+        <style>
+            body {
+                margin: 0px;
+                padding: 0px;
+            }
+            #start{
+                text-align: center;
+                margin-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="start">
+            <h1>Start Game</h1>
+        </div>
+        <canvas id="stageCanvas" width="500px" height="500px">你的瀏覽器不支援Canvas</canvas>
+    </body>
+</html>
