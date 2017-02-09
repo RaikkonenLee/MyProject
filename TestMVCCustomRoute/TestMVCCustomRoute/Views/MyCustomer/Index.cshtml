@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+
+@foreach (var item in Request.RequestContext.RouteData.Values)
+{
+    <p>@(item.Key + "=" + item.Value)</p>
+}
+
+<p>@Url.Action("Index", "MyCustomer", Request.RequestContext.RouteData.Values)</p>
