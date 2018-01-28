@@ -5,21 +5,32 @@ using System.Text;
 
 namespace ObserverPattern
 {
-    class Program
+    class WeatherStation
     {
         static void Main(string[] args)
         {
-
+            //定義主題
+            WeatherData weatherData = new WeatherData();
+            //定義觀察者1(假設顯示在APP)
+            CurrentConditionsDisplay currentDisplay = 
+                new CurrentConditionsDisplay(weatherData);
+            //定義觀察者2(假設顯示在網站上)
+            StatisticsDisplay statisticsDisplay = 
+                new StatisticsDisplay(weatherData);
+            //
+            //給予值去自動更新觀察者的狀態
+            weatherData.SetMeasurements(80M, 65M, 30.4M);
+            weatherData.SetMeasurements(82M, 70M, 29.2M);
         }
     }
 
-    public class CurrentCondidionsDisplay : IObserver
+    public class CurrentConditionsDisplay : IObserver
     {
         public decimal Temperature { get; private set; }
         public decimal Humidity { get; private set; }
         public ISubject WeatherData { get; private set; }
 
-        public CurrentCondidionsDisplay(ISubject weatherData)
+        public CurrentConditionsDisplay(ISubject weatherData)
         {
             WeatherData = weatherData;
             WeatherData.RegisterObserver(this);
@@ -36,6 +47,35 @@ namespace ObserverPattern
         {
             Console.WriteLine("Current contitions: " + Temperature + 
                 "F degrees and " + Humidity + "% humidity");
+        }
+    }
+
+    public class StatisticsDisplay : IObserver
+    {
+        public decimal Temperature { get; private set; }
+        public decimal Humidity { get; private set; }
+        public decimal Pressure { get; set; }
+
+        public ISubject WeatherData { get; private set; }
+
+        public StatisticsDisplay(ISubject weatherData)
+        {
+            WeatherData = weatherData;
+            WeatherData.RegisterObserver(this);
+        }
+
+        public void Update(decimal temperature, decimal humidity, decimal pressure)
+        {
+            Temperature = temperature;
+            Humidity = humidity;
+            Pressure = pressure;
+            Display();
+        }
+
+        public void Display()
+        {
+            Console.WriteLine("Current contitions: " + Temperature +
+                "F degrees and " + Humidity + "% humidity and " + Pressure + " pressure ");
         }
     }
 
