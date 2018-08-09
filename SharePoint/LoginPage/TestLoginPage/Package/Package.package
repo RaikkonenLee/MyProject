@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="37e2b791-bfd8-4c83-9c35-e52d6a5ab247" solutionId="37e2b791-bfd8-4c83-9c35-e52d6a5ab247" resetWebServer="false" sharePointProductVersion="16.0" name="TestLoginPage" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <projectItems>
+    <projectItemReference itemId="11811858-d9c3-4f70-8d61-ad8960e27396" />
+  </projectItems>
+</package>
