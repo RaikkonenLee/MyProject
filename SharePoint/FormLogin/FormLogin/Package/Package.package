@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" dslVersion="1.0.0.0" Id="1e233d83-4e73-4145-b0d0-a89340a3fdf3" solutionId="1e233d83-4e73-4145-b0d0-a89340a3fdf3" resetWebServer="false" sharePointProductVersion="16.0" name="FormLogin" xmlns="http://schemas.microsoft.com/VisualStudio/2008/SharePointTools/PackageModel">
+  <projectItems>
+    <projectItemReference itemId="a5d120b5-b8c3-45f3-a766-e4a84abd9c7a" />
+  </projectItems>
+</package>

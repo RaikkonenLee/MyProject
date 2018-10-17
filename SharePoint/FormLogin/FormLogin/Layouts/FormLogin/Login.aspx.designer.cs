@@ -7,7 +7,7 @@
 // </自動產生的>
 //------------------------------------------------------------------------------
 
-namespace LoginPage.Layouts.Login {
+namespace FormLogin.Layouts.FormLogin {
     
     
     public partial class Login {

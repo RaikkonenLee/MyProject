@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Layouts
+namespace FormLogin.Layouts
 {
     public class ReturnViewModel<T>
     {
@@ -42,5 +42,13 @@ namespace Layouts
         Case2 = 2,
         Case3 = 3,
         Case4 = 4
+    }
+
+    public enum Environment
+    {
+        None = 0,
+        Sys = 1,
+        Edu = 2,
+        It = 3
     }
 }

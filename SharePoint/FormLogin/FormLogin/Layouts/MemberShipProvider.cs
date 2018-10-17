@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.Security;
 
-namespace Layouts
+namespace FormLogin.Layouts
 {
     public class MyMemberShipProvider : SqlMembershipProvider
     {
@@ -36,9 +36,10 @@ namespace Layouts
         /// </summary>
         /// <param name="userName"></param>
         /// <returns></returns>
-        public bool ExistsUser(string userName)
+        public bool ExistsUser(string userName, out MembershipUser membershipUser)
         {
-            return this.GetUser(userName, false) != null ? true : false;
+            membershipUser = GetUser(userName, false);
+            return membershipUser != null ? true : false;
         }
 
         /// <summary>
@@ -50,7 +51,6 @@ namespace Layouts
         /// <returns></returns>
         public bool AddUser(string userName, string password, string email)
         {
-
             CreateUser(userName, password, email, "No Question", password, true, null, out MembershipCreateStatus status);
             return status == MembershipCreateStatus.Success ? true : false;
         }

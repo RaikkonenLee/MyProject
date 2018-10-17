@@ -3,11 +3,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3D8DFE24-A02C-4991-A024-B2C873F8D39D}</ProjectGuid>
+    <ProjectGuid>{1A14A330-037E-424D-A207-2D6AF8F899BC}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LoginPage</RootNamespace>
-    <AssemblyName>LoginPage</AssemblyName>
+    <RootNamespace>FormLogin</RootNamespace>
+    <AssemblyName>FormLogin</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <TargetOfficeVersion>16.0</TargetOfficeVersion>
     <FileAlignment>512</FileAlignment>
@@ -51,8 +51,6 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml" />
@@ -61,26 +59,27 @@
     <Reference Include="Microsoft.SharePoint.Client.ServerRuntime" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Layouts\Login\Login.aspx.cs">
+    <Compile Include="Layouts\ErpAPIService.cs" />
+    <Compile Include="Layouts\FormLogin\Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Layouts\Login\Login.aspx.designer.cs">
+    <Compile Include="Layouts\FormLogin\Login.aspx.designer.cs">
       <DependentUpon>Login.aspx.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layouts\HttpService.cs" />
     <Compile Include="Layouts\MemberShipProvider.cs" />
     <Compile Include="Layouts\ViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="key.snk" />
     <None Include="Layouts\SharePointProjectItem.spdata">
-      <SharePointProjectItemId>{11811858-d9c3-4f70-8d61-ad8960e27396}</SharePointProjectItemId>
+      <SharePointProjectItemId>{a5d120b5-b8c3-45f3-a766-e4a84abd9c7a}</SharePointProjectItemId>
     </None>
     <None Include="packages.config" />
     <None Include="Package\Package.package">
-      <PackageId>{37e2b791-bfd8-4c83-9c35-e52d6a5ab247}</PackageId>
+      <PackageId>{1e233d83-4e73-4145-b0d0-a89340a3fdf3}</PackageId>
     </None>
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
@@ -90,10 +89,7 @@
     <Folder Include="Features\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Layouts\Login\Login.aspx" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Connected Services\" />
+    <Content Include="Layouts\FormLogin\Login.aspx" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

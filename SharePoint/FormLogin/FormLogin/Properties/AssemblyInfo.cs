@@ -6,11 +6,11 @@ using System.Security;
 // 組件的一般資訊是由下列的屬性集控制 
 // 變更這些屬性的值即可修改組件的相關
 // 資訊。
-[assembly: AssemblyTitle("TestLoginPage")]
+[assembly: AssemblyTitle("FormLogin")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TestLoginPage")]
+[assembly: AssemblyProduct("FormLogin")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -21,7 +21,7 @@ using System.Security;
 [assembly: ComVisible(false)]
 
 // 下列 GUID 為專案公開 (Expose) 至 COM 時所要使用的 typelib ID
-[assembly: Guid("3d8dfe24-a02c-4991-a024-b2c873f8d39d")]
+[assembly: Guid("1a14a330-037e-424d-a207-2d6af8f899bc")]
 
 // 組件的版本資訊由下列四個值所組成: 
 //
