@@ -1,3 +1,4 @@
+
 /**  Demo 1
 import { Observable} from 'rxjs';
 var observable = Observable.create(
@@ -22,7 +23,6 @@ function logItem(val:any) {
  */
 /** Demo 2
  
-*/
 import { Observable, from, fromEvent, interval, of, BehaviorSubject, combineLatest } from 'rxjs';
 import { map, mergeMap, switchMap, filter, toArray, tap, take, merge, debounce, debounceTime } from 'rxjs/operators';
 
@@ -31,15 +31,26 @@ var wastes$: Observable<Waste[]>;
 var keyword$ = fromEvent(document.getElementById("textinput"), "keyup");
 var textinput: any = document.getElementById("textinput");
 //
-wastes$ = keyword$.pipe(
-    debounceTime(500),
-    mergeMap((keyword: KeyboardEvent) => wasteAPI$.pipe(
-            switchMap(((data: Waste[]) => data)),
-            filter(hasKeyword(textinput.value)),
-            toArray()
-        )
-    )
+// 原本的寫法
+// wastes$ = keyword$.pipe(
+//     debounceTime(500),
+//     mergeMap((keyword: KeyboardEvent) => wasteAPI$.pipe(
+//             switchMap(((data: Waste[]) => data)),
+//             filter(hasKeyword(textinput.value)),
+//             toArray()
+//         )
+//     )
+// );
+// 
+// 優化後的寫法
+wastes$ = combineLatest(
+    keyword$.pipe(
+        debounceTime(200)
+    ), wasteAPI$
+).pipe(
+    map(([keyword, wastes]) => wastes.filter(hasKeyword(textinput.value))) 
 );
+
 wastes$.subscribe(
     (result: Waste[]) => logItem(result));
 
@@ -83,4 +94,5 @@ interface Waste {
     OrgTel: string;
     OperatingAddress: string;
   }
-  //Demo 2
+  */
+ 
