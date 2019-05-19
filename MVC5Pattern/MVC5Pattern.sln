@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5Pattern", "MVC5Pattern\MVC5Pattern.csproj", "{D77FB5E6-FD77-4587-99AB-37E5A72CB9A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MVC5Pattern.Tests", "MVC5Pattern.Tests\MVC5Pattern.Tests.csproj", "{C1042F0D-D02B-420C-A9CE-4DE223A1E2BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D77FB5E6-FD77-4587-99AB-37E5A72CB9A3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D77FB5E6-FD77-4587-99AB-37E5A72CB9A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D77FB5E6-FD77-4587-99AB-37E5A72CB9A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D77FB5E6-FD77-4587-99AB-37E5A72CB9A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1042F0D-D02B-420C-A9CE-4DE223A1E2BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1042F0D-D02B-420C-A9CE-4DE223A1E2BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1042F0D-D02B-420C-A9CE-4DE223A1E2BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1042F0D-D02B-420C-A9CE-4DE223A1E2BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
