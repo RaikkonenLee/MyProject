@@ -10,5 +10,10 @@ namespace MVCPattern.Models
     {
         public IDbSet<Category> Categories { get; set; }
         public IDbSet<Product> Products { get; set; }
+
+        public ShopContext() : base("ShopContext")
+        {
+
+        }
     }
 }
